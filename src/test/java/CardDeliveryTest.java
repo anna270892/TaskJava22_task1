@@ -38,6 +38,32 @@ public class CardDeliveryTest {
                 .shouldBe(visible, text("Встреча успешно запланирована на " + date));
     }
 
+    //валидная отправка формы с повторными данными
+    @Test
+    void validSubmissionTwo() {
+        String city = UserDataGenerator.generateCity();
+        String date = UserDataGenerator.generateDate(5);
+        String fullName = UserDataGenerator.generateFullName();
+        String phoneNumber = UserDataGenerator.generatePhoneNumber();
+
+        $("[data-test-id='city'] input").setValue(city);
+        $("[data-test-id='date'] .input__control").sendKeys(Keys.CONTROL + "a");
+        $("[data-test-id='date'] .input__control").sendKeys(Keys.DELETE);
+        $("[data-test-id='date'] .input__control").setValue(date);
+        $("[data-test-id='name'] .input__control").setValue(fullName);
+        $("[data-test-id='phone'] input").setValue(phoneNumber);
+        $("[data-test-id='phone'] .input__sub").shouldBe(visible, text("На указанный номер моб. тел. будет " +
+                "отправлен смс-код для подтверждения заявки на карту. Проверьте, что номер ваш и введен корректно."));
+        $("[data-test-id='agreement'] .checkbox__box").click();
+        $(".button.button_view_extra .button__content").click();
+        $("[data-test-id='success-notification'].notification .notification__title").shouldBe(visible, text("Успешно!"));
+        $("[data-test-id='success-notification'] .notification__content")
+                .shouldBe(visible, text("Встреча успешно запланирована на " + date));
+        $(".button.button_view_extra .button__content").click();
+        $("[data-test-id='replan-notification'] .notification__content")
+                .shouldBe(visible, text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
+    }
+
     //Отправка формы с валидными данными без отмеченного чекбокса
     @Test
     void validSubmissionWithoutCheckbox() {
