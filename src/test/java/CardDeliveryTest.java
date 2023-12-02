@@ -14,6 +14,7 @@ public class CardDeliveryTest {
         open("http://localhost:7777/");
     }
 
+
     //валидная отправка формы
     @Test
     void validSubmissionOne() {
