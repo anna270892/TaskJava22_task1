@@ -1,3 +1,5 @@
+package org.example.delivery;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -59,6 +61,7 @@ public class CardDeliveryTest {
         $("[data-test-id='success-notification'].notification .notification__title").shouldBe(visible, text("Успешно!"));
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldBe(visible, text("Встреча успешно запланирована на " + date));
+        $("[data-test-id='date'] .input__control").setValue(date);
         $(".button.button_view_extra .button__content").click();
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldBe(visible, text("У вас уже запланирована встреча на другую дату. Перепланировать?"));

@@ -1,8 +1,11 @@
+package org.example.delivery;
+
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Random;
 
 public class UserDataGenerator {
 
@@ -13,7 +16,9 @@ public class UserDataGenerator {
     }
 
     public static String generateCity() {
-        return faker.address().city();
+        var validCities = new String[]{"Санкт-Петербург", "Москва", "Новосибирск", "Воронеж", "Великий Новгород", "Йошкар-Ола",
+                "Саратов", "Краснодар", "Калининград", "Тверь", "Чебоксары"};
+        return validCities[new Random().nextInt(validCities.length)];
     }
 
     public static String generateDate(int daysToAdd) {
@@ -30,7 +35,4 @@ public class UserDataGenerator {
         return faker.phoneNumber().subscriberNumber(10);
     }
 
-    public static String generateRandomText(int length) {
-        return faker.lorem().characters(length);
-    }
 }
