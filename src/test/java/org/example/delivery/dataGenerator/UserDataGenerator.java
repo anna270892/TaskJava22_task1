@@ -12,7 +12,6 @@ public class UserDataGenerator {
     private static final Faker faker = new Faker(new Locale("ru"));
 
     private UserDataGenerator() {
-
     }
 
     public static String generateCity() {
