@@ -41,7 +41,7 @@ public class CardDeliveryTest {
                 .shouldBe(visible, text("Встреча успешно запланирована на " + date));
     }
 
-    //валидная отправка формы с повторными данными
+    //валидная отправка формы с перепланированием встречи
     @Test
     void validSubmissionTwo() {
         String city = UserDataGenerator.generateCity();
