@@ -1,4 +1,4 @@
-package org.example.delivery;
+package org.example.delivery.dataGenerator;
 
 import com.github.javafaker.Faker;
 

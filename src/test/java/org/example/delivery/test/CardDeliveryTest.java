@@ -1,5 +1,6 @@
-package org.example.delivery;
+package org.example.delivery.test;
 
+import org.example.delivery.dataGenerator.UserDataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
