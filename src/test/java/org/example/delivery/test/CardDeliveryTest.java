@@ -66,6 +66,9 @@ public class CardDeliveryTest {
         $(".button.button_view_extra .button__content").click();
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldBe(visible, text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
+        $("[data-test-id='replan-notification'] .button__text").click();
+        $("[data-test-id='success-notification'] .notification__content")
+                .shouldBe(visible, text("Встреча успешно запланирована на " + date));
     }
 
     //Отправка формы с валидными данными без отмеченного чекбокса
