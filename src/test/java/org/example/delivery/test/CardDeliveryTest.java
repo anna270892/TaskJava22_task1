@@ -46,6 +46,7 @@ public class CardDeliveryTest {
     void validSubmissionTwo() {
         String city = UserDataGenerator.generateCity();
         String date = UserDataGenerator.generateDate(5);
+        String date2 = UserDataGenerator.generateDate(10);
         String fullName = UserDataGenerator.generateFullName();
         String phoneNumber = UserDataGenerator.generatePhoneNumber();
 
@@ -62,13 +63,15 @@ public class CardDeliveryTest {
         $("[data-test-id='success-notification'].notification .notification__title").shouldBe(visible, text("Успешно!"));
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldBe(visible, text("Встреча успешно запланирована на " + date));
-        $("[data-test-id='date'] .input__control").setValue(date);
+        $("[data-test-id='date'] .input__control").sendKeys(Keys.CONTROL + "a");
+        $("[data-test-id='date'] .input__control").sendKeys(Keys.DELETE);
+        $("[data-test-id='date'] .input__control").setValue(date2);
         $(".button.button_view_extra .button__content").click();
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldBe(visible, text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
         $("[data-test-id='replan-notification'] .button__text").click();
         $("[data-test-id='success-notification'] .notification__content")
-                .shouldBe(visible, text("Встреча успешно запланирована на " + date));
+                .shouldBe(visible, text("Встреча успешно запланирована на " + date2));
     }
 
     //Отправка формы с валидными данными без отмеченного чекбокса
